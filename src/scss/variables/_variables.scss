@@ -1,0 +1,49 @@
+$font-fira: "Fira Sans", sans-serif;
+$font-kanit: "Kanit", sans-serif;
+$font-mukta: "Mukta Malar", sans-serif;
+
+body[data-theme="light"] {
+  --background: #f1f6f9;
+  --text-primary: #141414;
+  --text-secondary: white;
+  --sidebar: #e2edf3;
+  --sidebar-button: #2d99c8;
+  --toggle-background: #f1f6f9;
+  --toggle-knob: #2d99c8;
+  --sidebar-input-background: #f1f6f9;
+  --sidebar-input-border: #141414;
+  --form-background: #e2edf3;
+  --form-input: #8d8d91;
+  --form-title: "";
+  --form-button: #2d99c8;
+  --cancel-background: white;
+  --cancel-title: "";
+  --cancel-button: #ed5c5a;
+  --component-background: #c6e986;
+  --component-border: #40b57a;
+  --component-line: "";
+  --shadow: #8d8d91;
+}
+
+body[data-theme="dark"] {
+  --background: #1e1e1f;
+  --text-primary: white;
+  --text-secondary: #141414;
+  --sidebar: #141414;
+  --sidebar-button: #2d99c8;
+  --toggle-background: #1e1e1f;
+  --toggle-knob: #2d99c8;
+  --sidebar-input-background: #1e1e1f;
+  --sidebar-input-border: white;
+  --form-background: #141414;
+  --form-input: #8d8d91;
+  --form-title: "";
+  --form-button: #2d99c8;
+  --cancel-background: white;
+  --cancel-title: "";
+  --cancel-button: #ed5c5a;
+  --component-background: #c6e986;
+  --component-border: #40b57a;
+  --component-line: "";
+  --shadow: #8d8d91;
+}
