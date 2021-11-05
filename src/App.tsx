@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div id="container">
-      {show && <FormContainer />}
+      {show && <FormContainer setShow={setShow} />}
       <Navbar setShow={setShow} />
       <Body />
     </div>

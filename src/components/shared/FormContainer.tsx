@@ -1,10 +1,21 @@
 import * as React from "react";
 import Form from "./Form";
 
-export default function FormContainer() {
+interface FormContainerProps {
+  setShow: React.Dispatch<React.SetStateAction<any>>;
+}
+
+export default function FormContainer(props: FormContainerProps) {
+  const { setShow } = props;
+
   return (
-    <div>
-      <Form />
+    <div className="formContainer">
+      <div className="formContainer__wrapper">
+        <button className="btn" onClick={() => setShow(false)}>
+          Close
+        </button>
+        <Form />
+      </div>
     </div>
   );
 }
