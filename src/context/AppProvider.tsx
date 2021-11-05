@@ -1,3 +1,4 @@
+import React from "react";
 import { AppProps } from "../@types/types";
 import ThemeProvider from "./ThemeProvider";
 
