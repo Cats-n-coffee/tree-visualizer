@@ -1,19 +1,12 @@
+// Variables
 @use "./variables/" as *;
-@use "./navbar/themeToggle";
 
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// Shared
+@use "./shared/general";
 
-html,
-body {
-  min-height: 100vh;
-}
+// Navbar
+@use "./navbar/buttons/themeToggle";
+@use "./navbar/navbar";
 
-body {
-  background-color: rgb(69, 70, 69);
-}
+// Body
+@use "./body/body";

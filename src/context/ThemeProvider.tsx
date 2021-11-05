@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AppProps } from "../types";
+import { AppProps } from "../@types/types";
 
 type ThemeContextState = {
   theme: string;
