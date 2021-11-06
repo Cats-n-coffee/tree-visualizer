@@ -16,7 +16,9 @@ export default function Navbar(props: NavbarProps) {
       </h1>
       <div className="center navbar-sections">
         <section aria-label="add buttons" className="center navbar-add-buttons">
-          <button onClick={() => setShow(true)}>Add Component</button>
+          <button className="btn  navbar-btn" onClick={() => setShow(true)}>
+            Add Component
+          </button>
         </section>
         <section
           aria-label="filters"
