@@ -15,13 +15,14 @@
   z-index: 4;
 
   &__wrapper {
-    max-width: 500px;
+    max-width: 430px;
+    width: 100%;
     background: var(--form-background);
     padding: 2em;
     border-radius: 8px;
   }
 
-  .btn-form {
+  .btn__form {
     width: auto;
     background: var(--form-button);
     color: var(--text-secondary);

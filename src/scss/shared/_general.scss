@@ -46,3 +46,26 @@ body {
   font-size: 1rem;
   box-shadow: 1px 1px 2px var(--shadow);
 }
+
+.btn__icon {
+  background: none;
+  width: auto;
+  padding-right: 0;
+
+  svg {
+    width: 20px;
+    height: 20px;
+
+    path {
+      fill: var(--text-primary);
+    }
+  }
+}
+
+.btn__icon:hover {
+  svg {
+    path {
+      fill: var(--form-button);
+    }
+  }
+}
