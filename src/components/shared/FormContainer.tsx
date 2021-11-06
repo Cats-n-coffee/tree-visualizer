@@ -1,6 +1,6 @@
 import * as React from "react";
 import Form from "./Form";
-import { NewComponent } from "../../@types/interfaces";
+import { TreeComponent } from "../../@types/interfaces";
 
 interface FormContainerProps {
   setShow: React.Dispatch<React.SetStateAction<any>>;
@@ -9,7 +9,7 @@ interface FormContainerProps {
 export default function FormContainer(props: FormContainerProps) {
   const { setShow } = props;
 
-  function handleSubmit(newComponent: NewComponent) {
+  function handleSubmit(newComponent: TreeComponent) {
     console.log("submitted", newComponent);
   }
 
