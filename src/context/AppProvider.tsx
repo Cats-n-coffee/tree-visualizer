@@ -1,11 +1,11 @@
-import React from "react";
-import { AppProps } from "../@types/types";
-import ThemeProvider from "./ThemeProvider";
+import React from 'react';
+import { AppProps } from '../@types/types';
+import ThemeProvider from './ThemeProvider';
 
 export default function AppProvider({ children }: AppProps) {
-  return (
-    <React.Fragment>
-      <ThemeProvider>{children}</ThemeProvider>
-    </React.Fragment>
-  );
+	return (
+		<React.Fragment>
+			<ThemeProvider>{children}</ThemeProvider>
+		</React.Fragment>
+	);
 }
