@@ -1,10 +1,12 @@
 import { Field, FieldArray, Form as FormFormik, Formik } from 'formik';
 import * as React from 'react';
+
 import {
 	PropFormValue,
 	StateFormValue,
-	TreeComponent
+	TreeComponent,
 } from '../../@types/interfaces';
+
 import { AddIcon, DeleteIcon } from './Icons';
 
 interface FormProps {
@@ -20,7 +22,7 @@ interface FormInitialValues {
 }
 
 export default function Form(props: FormProps) {
-	const { handleSubmit, componentToEdit } = props;
+	const { componentToEdit, handleSubmit } = props;
 	const initialValues: FormInitialValues = {
 		name: componentToEdit?.name || '',
 		parent: componentToEdit?.parent || '',
@@ -32,25 +34,25 @@ export default function Form(props: FormProps) {
 		<section className="center form">
 			<h2>Form</h2>
 			<Formik
-				initialValues={initialValues}
-				validateOnBlur={true}
-				validateOnChange={false}
 				enableReinitialize={true}
+				initialValues={initialValues}
 				onSubmit={(values) => {
 					handleSubmit(values);
 				}}
+				validateOnBlur={true}
+				validateOnChange={false}
 			>
-				{({ values, errors }) => (
+				{({ errors, values }) => (
 					<FormFormik>
 						<fieldset>
-							<label htmlFor="name" className="label__title">
+							<label className="label__title" htmlFor="name">
 								Name
 							</label>
 							<Field
-								type="text"
-								name="name"
-								id="name"
 								className="input__boxes"
+								id="name"
+								name="name"
+								type="text"
 							/>
 							{errors.name && <div>{errors.name}</div>}
 						</fieldset>
@@ -61,8 +63,8 @@ export default function Form(props: FormProps) {
 									<React.Fragment>
 										{values.props.map((prop, index) => (
 											<fieldset
-												key={`props.${index}`}
 												className="fieldset__row"
+												key={`props.${index}`}
 											>
 												<div className="fieldset__row__single">
 													<label
@@ -71,10 +73,10 @@ export default function Form(props: FormProps) {
 														Prop Name
 													</label>
 													<Field
-														type="text"
+														className="input__boxes"
 														id={`props.${index}.propName`}
 														name={`props.${index}.propName`}
-														className="input__boxes"
+														type="text"
 													/>
 												</div>
 												<div className="fieldset__row__single">
@@ -84,34 +86,32 @@ export default function Form(props: FormProps) {
 														Prop Value
 													</label>
 													<Field
-														type="text"
+														className="input__boxes"
 														id={`props.${index}.propValue`}
 														name={`props.${index}.propValue`}
-														className="input__boxes"
+														type="text"
 													/>
 												</div>
 												<button
+													className="btn btn__icon"
 													onClick={() =>
 														arrayHelpers.remove(
 															index
-														)
-													}
+														)}
 													type="button"
-													className="btn btn__icon"
 												>
 													<DeleteIcon />
 												</button>
 											</fieldset>
 										))}
 										<button
+											className="btn btn__form__list btn__icon"
 											onClick={() =>
 												arrayHelpers.push({
 													propName: '',
 													propValue: '',
-												})
-											}
+												})}
 											type="button"
-											className="btn btn__form__list btn__icon"
 										>
 											<AddIcon />
 										</button>
@@ -126,8 +126,8 @@ export default function Form(props: FormProps) {
 									<React.Fragment>
 										{values.state.map((entry, index) => (
 											<fieldset
-												key={`state.${index}`}
 												className="fieldset__row"
+												key={`state.${index}`}
 											>
 												<div className="fieldset__row__single">
 													<label
@@ -136,10 +136,10 @@ export default function Form(props: FormProps) {
 														State Name
 													</label>
 													<Field
-														type="text"
+														className="input__boxes"
 														id={`state.${index}.stateName`}
 														name={`state.${index}.stateName`}
-														className="input__boxes"
+														type="text"
 													/>
 												</div>
 												<div className="fieldset__row__single">
@@ -149,34 +149,32 @@ export default function Form(props: FormProps) {
 														Hook
 													</label>
 													<Field
-														type="text"
+														className="input__boxes"
 														id={`state.${index}.hookName`}
 														name={`state.${index}.hookName`}
-														className="input__boxes"
+														type="text"
 													/>
 												</div>
 												<button
+													className="btn btn__icon"
 													onClick={() =>
 														arrayHelpers.remove(
 															index
-														)
-													}
+														)}
 													type="button"
-													className="btn btn__icon"
 												>
 													<DeleteIcon />
 												</button>
 											</fieldset>
 										))}
 										<button
+											className="btn btn__form__list btn__icon"
 											onClick={() =>
 												arrayHelpers.push({
-													stateName: '',
 													hookName: '',
-												})
-											}
+													stateName: '',
+												})}
 											type="button"
-											className="btn btn__form__list btn__icon"
 										>
 											<AddIcon />
 										</button>
@@ -185,14 +183,17 @@ export default function Form(props: FormProps) {
 							</FieldArray>
 						</fieldset>
 						<fieldset>
-							<label htmlFor="parent" className="label__title">
+							<label
+								className="label__title"
+								htmlFor="parent"
+							>
 								Parent
 							</label>
 							<Field
-								type="text"
-								name="parent"
-								id="parent"
 								className="input__boxes"
+								id="parent"
+								name="parent"
+								type="text"
 							/>
 							{errors.name && <div>{errors.name}</div>}
 						</fieldset>

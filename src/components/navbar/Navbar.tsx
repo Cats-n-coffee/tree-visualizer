@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import ThemeToggle from './buttons/ThemeToggle';
 
 interface NavbarProps {
@@ -7,6 +8,7 @@ interface NavbarProps {
 
 export default function Navbar(props: NavbarProps) {
 	const { setShow } = props;
+
 	return (
 		<nav className="navbar">
 			<h1>
@@ -22,6 +24,7 @@ export default function Navbar(props: NavbarProps) {
 					<button
 						className="btn  navbar-btn"
 						onClick={() => setShow(true)}
+						type="button"
 					>
 						Add Component
 					</button>
@@ -29,7 +32,7 @@ export default function Navbar(props: NavbarProps) {
 				<section
 					aria-label="filters"
 					className="center navbar-filters"
-				></section>
+				/>
 				<ThemeToggle />
 			</div>
 		</nav>

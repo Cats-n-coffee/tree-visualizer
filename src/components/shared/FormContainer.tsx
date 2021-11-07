@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { TreeComponent } from '../../@types/interfaces';
-import Form from './Form';
+
 import { CrossIcon } from './Icons';
 
 interface FormContainerProps {
@@ -10,10 +9,6 @@ interface FormContainerProps {
 export default function FormContainer(props: FormContainerProps) {
 	const { setShow } = props;
 
-	function handleSubmit(newComponent: TreeComponent) {
-		console.log('submitted', newComponent);
-	}
-
 	return (
 		<div className="formContainer">
 			<div className="formContainer__wrapper">
@@ -21,10 +16,11 @@ export default function FormContainer(props: FormContainerProps) {
 					className="btn btn__icon"
 					onClick={() => setShow(false)}
 					style={{ marginLeft: 'auto' }}
+					type="button"
 				>
 					<CrossIcon />
 				</button>
-				<Form handleSubmit={handleSubmit} />
+				{/* <Form handleSubmit={handleSubmit} /> */}
 			</div>
 		</div>
 	);
