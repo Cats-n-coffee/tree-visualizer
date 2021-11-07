@@ -1,33 +1,35 @@
 import * as React from 'react';
-import { AppProps } from '../@types/types';
+
+import { AppProps } from 'typings/interfaces';
 
 type ThemeContextState = {
 	theme: string;
 	setTheme: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const contextDefaultValues: ThemeContextState = {
+const contextDefaultValue: ThemeContextState = {
 	theme: '',
 	setTheme: () => {},
 };
 
 const ThemeContext =
-	React.createContext<ThemeContextState>(contextDefaultValues);
+	React.createContext<ThemeContextState>(contextDefaultValue);
 ThemeContext.displayName = 'ThemeContext';
 
 export default function ThemeProvider({ children }: AppProps) {
 	const [theme, setTheme] = React.useState(
 		() => window.localStorage.getItem('theme') || 'light'
 	);
-	const values = { theme, setTheme };
+
+	const value = { theme, setTheme };
 
 	React.useEffect(() => {
 		document.body.dataset.theme = theme;
-		window.localStorage.setItem('theme', theme);
+		localStorage.setItem('theme', theme);
 	}, [theme]);
 
 	return (
-		<ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
+		<ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 	);
 }
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import Body from './components/body/Body';
-import Navbar from './components/navbar/Navbar';
-import FormContainer from './components/shared/FormContainer';
+import Body from 'components/body/Body';
+import Navbar from 'components/navbar/Navbar';
+import FormContainer from 'components/shared/FormContainer';
+
 
 function App() {
 	const [show, setShow] = React.useState(false);

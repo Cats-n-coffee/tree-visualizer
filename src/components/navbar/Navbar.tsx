@@ -3,7 +3,7 @@ import * as React from 'react';
 import ThemeToggle from './buttons/ThemeToggle';
 
 interface NavbarProps {
-	setShow: React.Dispatch<React.SetStateAction<any>>;
+	setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Navbar(props: NavbarProps) {

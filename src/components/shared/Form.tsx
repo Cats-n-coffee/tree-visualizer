@@ -1,12 +1,6 @@
 import { Field, FieldArray, Form as FormFormik, Formik } from 'formik';
 import * as React from 'react';
-
-import {
-	PropFormValue,
-	StateFormValue,
-	TreeComponent,
-} from '../../@types/interfaces';
-
+import { PropFormValue, StateFormValue, TreeComponent } from 'typings/interfaces';
 import { AddIcon, DeleteIcon } from './Icons';
 
 interface FormProps {
