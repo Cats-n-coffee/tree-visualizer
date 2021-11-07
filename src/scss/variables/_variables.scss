@@ -1,6 +1,8 @@
-$font-fira: "Fira Sans", sans-serif;
-$font-kanit: "Kanit", sans-serif;
-$font-mukta: "Mukta Malar", sans-serif;
+:root {
+  --font-fira: "Fira Sans", sans-serif;
+  --font-kanit: "Kanit", sans-serif;
+  --font-mukta: "Mukta Malar", sans-serif;
+}
 
 body[data-theme="light"] {
   --background: #f1f6f9;

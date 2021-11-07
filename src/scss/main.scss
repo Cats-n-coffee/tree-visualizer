@@ -3,6 +3,8 @@
 
 // Shared
 @use "./shared/general";
+@use "./shared/formContainer";
+@use "./shared/form";
 
 // Navbar
 @use "./navbar/buttons/themeToggle";
