@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { AppProps } from 'typings/interfaces';
-
 type ThemeContextState = {
 	theme: string;
 	setTheme: React.Dispatch<React.SetStateAction<string>>;
