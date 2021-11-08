@@ -1,12 +1,5 @@
 import * as React from "react";
-
-interface TreeNode {
-  name: string;
-  props: Array<PropFormValue>;
-  state: Array<StateFormValue>;
-  parent: string;
-  children?: Array<TreeNode>;
-}
+import { findNodeAndInsert } from "../utils/tree/nodeHelpers";
 
 // setTree optional, otherwise 'value' prop is missing a property
 type TreeContextState = {
@@ -25,7 +18,12 @@ TreeContext.displayName = "TreeContext";
 export default function TreeContextProvider({ children }: AppProps) {
   const [tree, setTree] = React.useState<TreeNode[]>([]);
 
-  const value = { tree };
+  const insertNode = (node: TreeNode) => {
+    const newTree = findNodeAndInsert(node, tree);
+    console.log("insertNode in context result", newTree);
+  };
+
+  const value = { tree, insertNode };
 
   return <TreeContext.Provider value={value}>{children}</TreeContext.Provider>;
 }
