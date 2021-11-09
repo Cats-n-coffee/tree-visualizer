@@ -8,6 +8,7 @@ type TreeContextState = {
   insertNode: (node: TreeNode) => void;
 };
 
+// Default values
 const treeContextDefault: TreeContextState = {
   tree: [],
   setTree: () => {},
@@ -20,18 +21,21 @@ TreeContext.displayName = "TreeContext";
 export default function TreeContextProvider({ children }: AppProps) {
   const [tree, setTree] = React.useState<TreeNode[]>([]);
 
+  // Inserts a node to the correct parent
   const insertNode = (newNode: TreeNode) => {
     if (tree.length === 0) {
+      console.log("inside context 0 chidlrem", newNode);
       setTree((oldTree) => [...oldTree, newNode]);
-      console.log("tree is", tree);
     } else {
       const parentName = newNode.parent;
-      let rootNode = tree[0];
+      const rootNode = tree[0];
+      console.log("rootNode", rootNode);
       const newTree = findNodeAndInsert(parentName, newNode, rootNode);
       console.log("insertNode in context result", newTree);
+      setTree(newTree);
     }
   };
-
+  console.log("tree is", tree);
   const value = { tree, insertNode };
 
   return <TreeContext.Provider value={value}>{children}</TreeContext.Provider>;

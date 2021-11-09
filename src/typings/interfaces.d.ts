@@ -24,5 +24,5 @@ declare interface TreeNode {
   props: Array<PropFormValue>;
   state: Array<StateFormValue>;
   parent: string | null;
-  children: Array<TreeNode>;
+  allChildren: Array<TreeNode>;
 }

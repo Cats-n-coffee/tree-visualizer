@@ -21,7 +21,7 @@ export default function FormContainer(props: FormContainerProps) {
         >
           <CrossIcon />
         </button>
-        <Form />
+        <Form setShow={setShow} />
       </div>
     </div>
   );

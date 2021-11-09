@@ -6,6 +6,7 @@ import { AddIcon, DeleteIcon } from "./Icons";
 
 interface FormProps {
   componentToEdit?: TreeComponent;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface FormInitialValues {
@@ -13,28 +14,27 @@ interface FormInitialValues {
   parent: string | null;
   props: Array<PropFormValue>;
   state: Array<StateFormValue>;
-  children: [];
+  allChildren: [];
 }
 
 export default function Form(props: FormProps) {
-  const { componentToEdit } = props;
+  const { componentToEdit, setShow } = props;
   const { insertNode } = useTreeContext();
   const initialValues: FormInitialValues = {
     name: componentToEdit?.name || "",
     parent: componentToEdit?.parent || "",
     props: componentToEdit?.props || [],
     state: componentToEdit?.state || [],
-    children: [],
+    allChildren: [],
   };
 
   const handleSubmit = (node: TreeNode) => {
     if (node.parent === "") {
-      console.log("handlesubmit empty parent", { ...node, parent: null });
       insertNode({ ...node, parent: null });
     } else {
-      console.log("submittimng", node);
       insertNode(node);
     }
+    setShow(false);
   };
 
   return (
