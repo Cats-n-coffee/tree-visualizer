@@ -23,19 +23,23 @@ export default function TreeContextProvider({ children }: AppProps) {
 
   // Inserts a node to the correct parent
   const insertNode = (newNode: TreeNode) => {
+    // If the current state of the tree is empty, then it will be the root node
     if (tree.length === 0) {
-      console.log("inside context 0 chidlrem", newNode);
       setTree((oldTree) => [...oldTree, newNode]);
     } else {
-      const parentName = newNode.parent;
+      // If there is already a root node, then we add children to the correct parent
+      let parentName = newNode.parent;
       const rootNode = tree[0];
-      console.log("rootNode", rootNode);
+
+      if (parentName === null) {
+        newNode.parent = rootNode.name;
+        parentName = newNode.parent;
+      }
       const newTree = findNodeAndInsert(parentName, newNode, rootNode);
-      console.log("insertNode in context result", newTree);
       setTree(newTree);
     }
   };
-  console.log("tree is", tree);
+
   const value = { tree, insertNode };
 
   return <TreeContext.Provider value={value}>{children}</TreeContext.Provider>;
