@@ -1,0 +1,40 @@
+[] - Tree Context:
+    [] - Create Context:
+        [] - Provider
+        [] - Hook to use the context
+    [] - State
+    [] - Methods: -- Each method should use a helper in order to set the state to the new tree.
+        [] - Insert node
+        [] - Delete node
+        [] - Edit node
+    [] - Helpers: -- Recursive functions to search the current state.
+        [] - Find and Insert
+        [] - Find and Delete
+        [] - Find and update
+        [] - Find and read -- retreives only the data needed for the operation
+
+[] - Tree (components):
+    [] - Wrapper
+    [] - Node
+        [] - Buttons -- edit, Delete
+        [] - Info on click
+    [] - Node info popup -- shows props and state 
+    [] - Intermediate (might be needed for recursion)
+    [] - Lines: -- could be a stand-alone components
+        [] - Lines Component (container)
+        [] - Line (might not be needed)
+        [] - Helpers:
+            [] - Get the nodes positions
+            [] - Create 'd' path attribute
+            [] - Hook (might be needed) to update positions and make them responsive
+    [] - Styles
+
+[] - Forms:
+    [] - Add form (new component)
+    [] - Edit form 
+
+[] - Navbar:
+    [] - New project button (later)
+    [] - Select project dropdown (later)
+    [] - Filter tree (later)
+    [] - Show props/state
