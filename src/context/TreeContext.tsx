@@ -31,10 +31,12 @@ export default function TreeContextProvider({ children }: AppProps) {
       let parentName = newNode.parent;
       const rootNode = tree[0];
 
+      // If the parent is null (user did not specify), the parent will be the root node
       if (parentName === null) {
         newNode.parent = rootNode.name;
         parentName = newNode.parent;
       }
+      // Helper function to find the correct parent and insert the new child
       const newTree = findNodeAndInsert(parentName, newNode, rootNode);
       setTree(newTree);
     }
