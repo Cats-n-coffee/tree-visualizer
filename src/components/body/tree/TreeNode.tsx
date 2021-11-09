@@ -6,7 +6,7 @@ interface TreeNodeProps {
 }
 
 export default function TreeNode(props: TreeNodeProps) {
-  const { node } = props;
+  const { node, level } = props;
   const [showActions, setShowActions] = React.useState(false);
 
   return (

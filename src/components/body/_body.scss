@@ -1,4 +1,16 @@
 .body {
   background: var(--background);
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2em;
+
+  .treeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
 }

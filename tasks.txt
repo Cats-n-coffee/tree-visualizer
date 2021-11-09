@@ -17,9 +17,9 @@
     [] - Wrapper
     [] - Node
         [] - Buttons -- edit, Delete
-        [] - Info on click
+        [] - Info on click?
     [] - Node info popup -- shows props and state 
-    [] - Intermediate (might be needed for recursion)
+    [] - Intermediate? (might be needed for recursion/styling)
     [] - Lines: -- could be a stand-alone components
         [] - Lines Component (container)
         [] - Line (might not be needed)
@@ -38,4 +38,4 @@
     [] - New project button (later)
     [] - Select project dropdown (later)
     [] - Filter tree (later)
-    [] - Show props/state
+    [] - Show props/state (later)
