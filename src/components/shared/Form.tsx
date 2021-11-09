@@ -1,3 +1,4 @@
+import { useTreeContext } from "context/TreeContext";
 import { Field, FieldArray, Form as FormFormik, Formik } from "formik";
 import * as React from "react";
 
@@ -9,22 +10,31 @@ interface FormProps {
 
 interface FormInitialValues {
   name: string;
-  parent: string;
+  parent: string | null;
   props: Array<PropFormValue>;
   state: Array<StateFormValue>;
+  children: [];
 }
 
 export default function Form(props: FormProps) {
   const { componentToEdit } = props;
+  const { insertNode } = useTreeContext();
   const initialValues: FormInitialValues = {
     name: componentToEdit?.name || "",
     parent: componentToEdit?.parent || "",
     props: componentToEdit?.props || [],
     state: componentToEdit?.state || [],
+    children: [],
   };
 
   const handleSubmit = (node: TreeNode) => {
-    console.log("handlesubmit inside form", node);
+    if (node.parent === "") {
+      console.log("handlesubmit empty parent", { ...node, parent: null });
+      insertNode({ ...node, parent: null });
+    } else {
+      console.log("submittimng", node);
+      insertNode(node);
+    }
   };
 
   return (
