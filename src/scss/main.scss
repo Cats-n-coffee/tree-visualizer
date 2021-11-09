@@ -11,4 +11,5 @@
 @use "./navbar/navbar";
 
 // Body
-@use "./body/body";
+@use "../components/body/body";
+@use "../components/body/tree/tree";

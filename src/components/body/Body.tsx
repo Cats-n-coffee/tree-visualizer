@@ -7,8 +7,9 @@ export default function Body() {
   const { tree } = useTreeContext();
   return (
     <main className="body">
-      Body component
-      <TreeContainer tree={tree} />
+      <div className="treeContainer">
+        <TreeContainer tree={tree} />
+      </div>
     </main>
   );
 }

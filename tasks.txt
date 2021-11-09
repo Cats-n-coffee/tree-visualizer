@@ -31,7 +31,8 @@
 
 [] - Forms:
     [] - Add form (new component)
-    [] - Edit form 
+        - Select dropdown for parents --> solves the problem of typos from user
+    [] - Edit form --> disable the parent dropdown
 
 [] - Navbar:
     [] - New project button (later)

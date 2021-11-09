@@ -11,14 +11,14 @@ export default function TreeContainer(props: TreeContainerProps) {
   const { tree, level = 0 } = props;
 
   return (
-    <div>
+    <>
       {tree &&
         tree.map((node) => (
-          <div key={node.name}>
-            <TreeNode node={node} />
+          <div key={node.name} className="parentWrapper">
+            <TreeNode node={node} level={level} />
             <TreeContainer tree={node.allChildren} level={level + 1} />
           </div>
         ))}
-    </div>
+    </>
   );
 }
