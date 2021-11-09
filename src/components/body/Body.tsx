@@ -1,5 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
+
+import { useTreeContext } from "context/TreeContext";
+import TreeContainer from "./tree/TreeContainer";
 
 export default function Body() {
-	return <main className="body">Body component</main>;
+  const { tree } = useTreeContext();
+  return (
+    <main className="body">
+      Body component
+      <TreeContainer tree={tree} />
+    </main>
+  );
 }
