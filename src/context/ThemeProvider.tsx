@@ -15,7 +15,9 @@ const ThemeContext =
   React.createContext<ThemeContextState>(contextDefaultValue);
 ThemeContext.displayName = 'ThemeContext';
 
-export default function ThemeProvider({ children }: AppProps) {
+export default function ThemeProvider({
+  children,
+}: AppProps): React.ReactElement {
   const [theme, setTheme] = React.useState(
     () => window.localStorage.getItem('theme') || 'light'
   );
@@ -32,7 +34,7 @@ export default function ThemeProvider({ children }: AppProps) {
   );
 }
 
-export function useThemeProvider() {
+export function useThemeProvider(): ThemeContextState {
   const theme = React.useContext(ThemeContext);
 
   if (!theme) {
