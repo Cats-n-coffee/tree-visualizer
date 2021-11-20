@@ -18,3 +18,11 @@ declare interface StateFormValue {
 declare interface AppProps {
   children: React.ReactNode;
 }
+
+declare interface TreeNode {
+  name: string;
+  props: PropFormValue[];
+  state: StateFormValue[];
+  parent: string | null;
+  allChildren: TreeNode[];
+}
