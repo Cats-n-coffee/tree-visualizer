@@ -1,5 +1,5 @@
 import * as React from "react";
-import { findNodeAndInsert } from "../utils/tree/nodeHelpers";
+import { findNodeAndInsert } from "utils/tree/nodeHelpers";
 
 // setTree optional, otherwise 'value' prop is missing a property
 type TreeContextState = {
@@ -37,7 +37,11 @@ export default function TreeContextProvider({ children }: AppProps) {
         parentName = newNode.parent;
       }
       // Helper function to find the correct parent and insert the new child
-      const newTree = findNodeAndInsert(parentName, newNode, rootNode);
+      const newTree = findNodeAndInsert({
+        parentName,
+        newNode,
+        tree: rootNode,
+      });
       setTree(newTree);
     }
   };
