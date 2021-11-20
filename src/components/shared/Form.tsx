@@ -34,6 +34,7 @@ export default function Form(props: FormProps) {
     } else {
       insertNode(node);
     }
+
     setShow(false);
   };
 
