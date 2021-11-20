@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import ThemeProvider from "./ThemeProvider";
-import TreeContextProvider from "./TreeContext";
+import ThemeProvider from './ThemeProvider';
+import TreeContextProvider from './TreeContext';
 
-export default function AppProvider({ children }: AppProps) {
-  return (
-    <React.Fragment>
-      <ThemeProvider>
-        <TreeContextProvider>{children}</TreeContextProvider>
-      </ThemeProvider>
-    </React.Fragment>
-  );
-}
+const AppProvider: React.FC = ({ children }) => (
+  <React.Fragment>
+    <ThemeProvider>
+      <TreeContextProvider>{children}</TreeContextProvider>
+    </ThemeProvider>
+  </React.Fragment>
+);
+
+export default AppProvider;

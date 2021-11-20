@@ -1,13 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
 
-import TreeNode from "./TreeNode";
+import TreeNode from './TreeNode';
 
 interface TreeContainerProps {
   tree?: TreeNode[];
   level?: number;
 }
 
-export default function TreeContainer(props: TreeContainerProps) {
+export default function TreeContainer(
+  props: TreeContainerProps
+): React.ReactElement {
   const { tree, level = 0 } = props;
 
   return (

@@ -1,15 +1,21 @@
-export function findNodeAndInsert(
-  parentName: string | null,
-  newNode: TreeNode,
-  tree: TreeNode
-) {
+interface FindAndInsert {
+  parentName: string | null;
+  newNode: TreeNode;
+  tree: TreeNode;
+}
+
+export function findNodeAndInsert({
+  parentName,
+  newNode,
+  tree,
+}: FindAndInsert): TreeNode[] {
+  // If the names match, we found the parent to which we add the child to
   if (tree.name === parentName) {
-    console.log("adding a child to the parent", tree);
     tree.allChildren.push(newNode);
   } else {
-    for (let i = 0; i < tree.allChildren.length; i += 1) {
-      console.log("we have to find the parent");
-      findNodeAndInsert(parentName, newNode, tree.allChildren[i]);
+    // If the names don't match, we keep looking in the tree
+    for (let i = 0, len = tree.allChildren.length; i < len; i += 1) {
+      findNodeAndInsert({ parentName, newNode, tree: tree.allChildren[i] });
     }
   }
   return [tree];

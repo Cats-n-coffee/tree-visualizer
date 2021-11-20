@@ -1,24 +1,22 @@
-import * as React from "react";
-import { findNodeAndInsert } from "../utils/tree/nodeHelpers";
+import * as React from 'react';
+import { findNodeAndInsert } from 'utils/tree/nodeHelpers';
 
 // setTree optional, otherwise 'value' prop is missing a property
 type TreeContextState = {
-  tree: Array<TreeNode>;
-  setTree?: React.Dispatch<React.SetStateAction<Array<TreeNode>>>;
+  tree: TreeNode[];
+  setTree?: React.Dispatch<React.SetStateAction<TreeNode[]>>;
+  // eslint-disable-next-line no-unused-vars
   insertNode: (node: TreeNode) => void;
 };
 
-// Default values
-const treeContextDefault: TreeContextState = {
-  tree: [],
-  setTree: () => {},
-  insertNode: (node: TreeNode) => {},
-};
+const TreeContext = React.createContext<TreeContextState | undefined>(
+  undefined
+);
+TreeContext.displayName = 'TreeContext';
 
-const TreeContext = React.createContext<TreeContextState>(treeContextDefault);
-TreeContext.displayName = "TreeContext";
-
-export default function TreeContextProvider({ children }: AppProps) {
+export default function TreeContextProvider({
+  children,
+}: AppProps): React.ReactElement {
   const [tree, setTree] = React.useState<TreeNode[]>([]);
 
   // Inserts a node to the correct parent
@@ -37,7 +35,11 @@ export default function TreeContextProvider({ children }: AppProps) {
         parentName = newNode.parent;
       }
       // Helper function to find the correct parent and insert the new child
-      const newTree = findNodeAndInsert(parentName, newNode, rootNode);
+      const newTree = findNodeAndInsert({
+        parentName,
+        newNode,
+        tree: rootNode,
+      });
       setTree(newTree);
     }
   };
@@ -47,11 +49,11 @@ export default function TreeContextProvider({ children }: AppProps) {
   return <TreeContext.Provider value={value}>{children}</TreeContext.Provider>;
 }
 
-export function useTreeContext() {
+export function useTreeContext(): TreeContextState {
   const tree = React.useContext(TreeContext);
 
   if (!tree) {
-    throw new Error("Hook needs to be used inside the TreeContextProvider");
+    throw new Error('Hook needs to be used inside the TreeContextProvider');
   }
 
   return tree;

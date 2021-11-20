@@ -21,8 +21,8 @@ declare interface AppProps {
 
 declare interface TreeNode {
   name: string;
-  props: Array<PropFormValue>;
-  state: Array<StateFormValue>;
+  props: PropFormValue[];
+  state: StateFormValue[];
   parent: string | null;
-  allChildren: Array<TreeNode>;
+  allChildren: TreeNode[];
 }

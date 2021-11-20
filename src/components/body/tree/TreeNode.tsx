@@ -1,11 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface TreeNodeProps {
   node: TreeNode;
   level: number;
 }
 
-export default function TreeNode(props: TreeNodeProps) {
+export default function TreeNode(props: TreeNodeProps): React.ReactElement {
   const { node, level } = props;
   const [showActions, setShowActions] = React.useState(false);
 
@@ -18,8 +18,8 @@ export default function TreeNode(props: TreeNodeProps) {
       <h3>{node.name}</h3>
       {showActions && (
         <div>
-          <button onClick={() => console.log("edit", node.name)}>Edit</button>
-          <button onClick={() => console.log("delete", node.name)}>
+          <button onClick={() => console.log('edit', node.name)}>Edit</button>
+          <button onClick={() => console.log('delete', node.name)}>
             Delete
           </button>
         </div>

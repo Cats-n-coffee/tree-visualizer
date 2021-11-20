@@ -1,8 +1,8 @@
-import { useTreeContext } from "context/TreeContext";
-import { Field, FieldArray, Form as FormFormik, Formik } from "formik";
-import * as React from "react";
+import { useTreeContext } from 'context/TreeContext';
+import { Field, FieldArray, Form as FormFormik, Formik } from 'formik';
+import * as React from 'react';
 
-import { AddIcon, DeleteIcon } from "./Icons";
+import { AddIcon, DeleteIcon } from './Icons';
 
 interface FormProps {
   componentToEdit?: TreeComponent;
@@ -17,23 +17,24 @@ interface FormInitialValues {
   allChildren: [];
 }
 
-export default function Form(props: FormProps) {
+export default function Form(props: FormProps): React.ReactElement {
   const { componentToEdit, setShow } = props;
   const { insertNode } = useTreeContext();
   const initialValues: FormInitialValues = {
-    name: componentToEdit?.name || "",
-    parent: componentToEdit?.parent || "",
+    name: componentToEdit?.name || '',
+    parent: componentToEdit?.parent || '',
     props: componentToEdit?.props || [],
     state: componentToEdit?.state || [],
     allChildren: [],
   };
 
   const handleSubmit = (node: TreeNode) => {
-    if (node.parent === "") {
+    if (node.parent === '') {
       insertNode({ ...node, parent: null });
     } else {
       insertNode(node);
     }
+
     setShow(false);
   };
 
@@ -108,8 +109,8 @@ export default function Form(props: FormProps) {
                       className="btn btn__form__list btn__icon"
                       onClick={() =>
                         arrayHelpers.push({
-                          propName: "",
-                          propValue: "",
+                          propName: '',
+                          propValue: '',
                         })
                       }
                       type="button"
@@ -165,8 +166,8 @@ export default function Form(props: FormProps) {
                       className="btn btn__form__list btn__icon"
                       onClick={() =>
                         arrayHelpers.push({
-                          hookName: "",
-                          stateName: "",
+                          hookName: '',
+                          stateName: '',
                         })
                       }
                       type="button"
