@@ -3,8 +3,8 @@ import { findNodeAndInsert } from "utils/tree/nodeHelpers";
 
 // setTree optional, otherwise 'value' prop is missing a property
 type TreeContextState = {
-  tree: Array<TreeNode>;
-  setTree?: React.Dispatch<React.SetStateAction<Array<TreeNode>>>;
+  tree: TreeNode[];
+  setTree?: React.Dispatch<React.SetStateAction<TreeNode[]>>;
   insertNode: (node: TreeNode) => void;
 };
 
@@ -15,7 +15,9 @@ const treeContextDefault: TreeContextState = {
   insertNode: (node: TreeNode) => {},
 };
 
-const TreeContext = React.createContext<TreeContextState>(treeContextDefault);
+const TreeContext = React.createContext<TreeContextState | undefined>(
+  undefined
+);
 TreeContext.displayName = "TreeContext";
 
 export default function TreeContextProvider({ children }: AppProps) {
