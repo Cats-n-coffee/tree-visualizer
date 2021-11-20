@@ -8,7 +8,7 @@ export function findNodeAndInsert({
   parentName,
   newNode,
   tree,
-}: FindAndInsert) {
+}: FindAndInsert): TreeNode[] {
   // If the names match, we found the parent to which we add the child to
   if (tree.name === parentName) {
     tree.allChildren.push(newNode);

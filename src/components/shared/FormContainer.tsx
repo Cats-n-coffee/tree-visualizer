@@ -1,13 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
 
-import Form from "./Form";
-import { CrossIcon } from "./Icons";
+import Form from './Form';
+import { CrossIcon } from './Icons';
 
 interface FormContainerProps {
-  setShow: React.Dispatch<React.SetStateAction<any>>;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function FormContainer(props: FormContainerProps) {
+export default function FormContainer(
+  props: FormContainerProps
+): React.ReactElement {
   const { setShow } = props;
 
   return (
@@ -16,7 +18,7 @@ export default function FormContainer(props: FormContainerProps) {
         <button
           className="btn btn__icon"
           onClick={() => setShow(false)}
-          style={{ marginLeft: "auto" }}
+          style={{ marginLeft: 'auto' }}
           type="button"
         >
           <CrossIcon />
