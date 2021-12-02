@@ -1,20 +1,20 @@
 [] - Tree Context:
-    [] - Create Context:
-        [] - Provider
-        [] - Hook to use the context
-    [] - State
+    [X] - Create Context:
+        [X] - Provider
+        [X] - Hook to use the context
+    [X] - State
     [] - Methods: -- Each method should use a helper in order to set the state to the new tree.
-        [] - Insert node - triggered from the `add component` form
+        [X] - Insert node - triggered from the `add component` form
         [] - Delete node - triggered from the node itself
         [] - Edit node - triggered from the node itself
     [] - Helpers: -- Recursive functions to search the current state.
-        [] - Find and Insert
+        [X] - Find and Insert
         [] - Find and Delete
         [] - Find and update
         [] - Find and read -- retreives only the data needed for the operation
 
 [] - Tree (components):
-    [] - Wrapper
+    [X] - Wrapper
     [] - Node
         [] - Buttons -- edit, Delete
         [] - Info on click?
@@ -30,7 +30,7 @@
     [] - Styles
 
 [] - Forms:
-    [] - Add form (new component)
+    [X] - Add form (new component)
         - Select dropdown for parents --> solves the problem of typos from user
     [] - Edit form --> disable the parent dropdown
 
