@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { useTreeContext } from 'context/TreeContext';
+
 interface TreeNodeProps {
   node: TreeNode;
   level: number;
@@ -7,6 +9,7 @@ interface TreeNodeProps {
 
 export default function TreeNode(props: TreeNodeProps): React.ReactElement {
   const { node, level } = props;
+  const { removeNode } = useTreeContext();
   const [showActions, setShowActions] = React.useState(false);
 
   return (
@@ -19,9 +22,7 @@ export default function TreeNode(props: TreeNodeProps): React.ReactElement {
       {showActions && (
         <div>
           <button onClick={() => console.log('edit', node.name)}>Edit</button>
-          <button onClick={() => console.log('delete', node.name)}>
-            Delete
-          </button>
+          <button onClick={() => removeNode(node.name)}>Delete</button>
         </div>
       )}
     </article>

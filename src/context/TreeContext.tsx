@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { findNodeAndInsert } from 'utils/tree/nodeHelpers';
+import { findNodeAndInsert, findNodeAndDelete } from 'utils/tree/nodeHelpers';
 
 // setTree optional, otherwise 'value' prop is missing a property
 type TreeContextState = {
@@ -7,6 +7,8 @@ type TreeContextState = {
   setTree?: React.Dispatch<React.SetStateAction<TreeNode[]>>;
   // eslint-disable-next-line no-unused-vars
   insertNode: (node: TreeNode) => void;
+  // eslint-disable-next-line no-unused-vars
+  removeNode: (nodeName: string) => void;
 };
 
 const TreeContext = React.createContext<TreeContextState | undefined>(
@@ -44,7 +46,14 @@ export default function TreeContextProvider({
     }
   };
 
-  const value = { tree, insertNode };
+  // Removes a node and its children from the correct parent
+  const removeNode = (nodeName: string) => {
+    const currentTree = tree[0];
+    const afterDeletingNode = findNodeAndDelete(nodeName, currentTree);
+    setTree(afterDeletingNode);
+  };
+
+  const value = { tree, insertNode, removeNode };
 
   return <TreeContext.Provider value={value}>{children}</TreeContext.Provider>;
 }
