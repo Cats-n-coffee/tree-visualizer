@@ -1,6 +1,7 @@
 .form {
   width: 100%;
   max-height: 600px;
+  height: 100%;
 
   h2 {
     text-transform: capitalize;
@@ -28,6 +29,11 @@
       font-family: var(--font-mukta);
       font-size: 0.9rem;
       cursor: pointer;
+
+      &:focus {
+        outline: none;
+        background-color: var(--sidebar-input-background);
+      }
     }
 
     .submit__btn {
@@ -36,7 +42,9 @@
       margin-top: 1em;
 
       &:hover {
-        background: var(--button-hover-blue);
+        background: var(--form-background);
+        color: var(--form-button);
+        outline: 1px solid var(--form-button);
       }
     }
 
@@ -52,7 +60,6 @@
       border: none;
       display: flex;
       justify-content: space-between;
-      gap: 0.5em;
       padding: 0.5em 0;
     }
 
@@ -77,6 +84,7 @@
           }
 
           input {
+            width: 100%;
             max-width: 150px;
           }
         }

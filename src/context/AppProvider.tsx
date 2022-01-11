@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import ThemeProvider from "./ThemeProvider";
-import TreeContextProvider from "./TreeContext";
+import ThemeProvider from './ThemeProvider';
+import TreeContextProvider from './TreeContext';
 
 const AppProvider: React.FC = ({ children }) => (
   <React.Fragment>

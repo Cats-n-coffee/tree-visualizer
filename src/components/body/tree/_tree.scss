@@ -1,0 +1,21 @@
+.levelWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  position: absolute;
+  top: 100px;
+
+  .parentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .node {
+      background-color: aquamarine;
+      border-bottom: 1px solid grey;
+      width: 100px;
+      margin-bottom: 50px;
+    }
+  }
+}
