@@ -1,10 +1,10 @@
 :root {
-  --font-fira: "Fira Sans", sans-serif;
-  --font-kanit: "Kanit", sans-serif;
-  --font-mukta: "Mukta Malar", sans-serif;
+  --font-fira: 'Fira Sans', sans-serif;
+  --font-kanit: 'Kanit', sans-serif;
+  --font-mukta: 'Mukta Malar', sans-serif;
 }
 
-body[data-theme="light"] {
+body[data-theme='light'] {
   --background: #f1f6f9;
   --text-primary: #141414;
   --text-secondary: white;
@@ -16,18 +16,19 @@ body[data-theme="light"] {
   --sidebar-input-border: #141414;
   --form-background: #e2edf3;
   --form-input: #8d8d91;
-  --form-title: "";
+  --form-title: '';
   --form-button: #2d99c8;
   --cancel-background: white;
-  --cancel-title: "";
+  --cancel-title: '';
   --cancel-button: #ed5c5a;
   --component-background: #c6e986;
   --component-border: #40b57a;
-  --component-line: "";
+  --component-line: '';
   --shadow: #8d8d91;
+  --background-blur: rgba(0, 0, 0, 0.4);
 }
 
-body[data-theme="dark"] {
+body[data-theme='dark'] {
   --background: #1e1e1f;
   --text-primary: white;
   --text-secondary: #141414;
@@ -39,13 +40,14 @@ body[data-theme="dark"] {
   --sidebar-input-border: white;
   --form-background: #141414;
   --form-input: #8d8d91;
-  --form-title: "";
+  --form-title: '';
   --form-button: #2d99c8;
-  --cancel-background: white;
-  --cancel-title: "";
+  --cancel-background: #1e1e1f;
+  --cancel-title: '';
   --cancel-button: #ed5c5a;
   --component-background: #c6e986;
   --component-border: #40b57a;
-  --component-line: "";
+  --component-line: '';
   --shadow: #8d8d91;
+  --background-blur: rgba(255, 255, 255, 0.2);
 }

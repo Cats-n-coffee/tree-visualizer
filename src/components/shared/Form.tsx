@@ -6,7 +6,7 @@ import { AddIcon, DeleteIcon } from './Icons';
 
 interface FormProps {
   componentToEdit?: TreeComponent;
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface FormInitialValues {
@@ -18,7 +18,7 @@ interface FormInitialValues {
 }
 
 export default function Form(props: FormProps): React.ReactElement {
-  const { componentToEdit, setShow } = props;
+  const { componentToEdit, setShowForm } = props;
   const { insertNode } = useTreeContext();
   const initialValues: FormInitialValues = {
     name: componentToEdit?.name || '',
@@ -35,7 +35,7 @@ export default function Form(props: FormProps): React.ReactElement {
       insertNode(node);
     }
 
-    setShow(false);
+    setShowForm(false);
   };
 
   return (

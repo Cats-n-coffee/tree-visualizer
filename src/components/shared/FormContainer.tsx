@@ -4,26 +4,26 @@ import Form from './Form';
 import { CrossIcon } from './Icons';
 
 interface FormContainerProps {
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function FormContainer(
   props: FormContainerProps
 ): React.ReactElement {
-  const { setShow } = props;
+  const { setShowForm } = props;
 
   return (
     <div className="formContainer">
       <div className="formContainer__wrapper">
         <button
           className="btn btn__icon"
-          onClick={() => setShow(false)}
+          onClick={() => setShowForm(false)}
           style={{ marginLeft: 'auto' }}
           type="button"
         >
           <CrossIcon />
         </button>
-        <Form setShow={setShow} />
+        <Form setShowForm={setShowForm} />
       </div>
     </div>
   );

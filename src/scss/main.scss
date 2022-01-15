@@ -1,15 +1,16 @@
 // Variables
-@use "./variables/" as *;
+@use './variables/' as *;
 
 // Shared
-@use "./shared/general";
-@use "./shared/formContainer";
-@use "./shared/form";
+@use './shared/general';
+@use './shared/formContainer';
+@use './shared/form';
+@use '../components/shared/deleteModal/deleteConfirmation';
 
 // Navbar
-@use "./navbar/buttons/themeToggle";
-@use "./navbar/navbar";
+@use './navbar/buttons/themeToggle';
+@use './navbar/navbar';
 
 // Body
-@use "../components/body/body";
-@use "../components/body/tree/tree";
+@use '../components/body/body';
+@use '../components/body/tree/tree';
