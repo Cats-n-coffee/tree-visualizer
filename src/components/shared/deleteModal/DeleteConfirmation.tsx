@@ -28,8 +28,20 @@ export default function DeleteConfirmation(
           Are you sure you want to delete this node? Any children will be
           deleted as well.
         </p>
-        <button onClick={() => setShowDelete(false)}>Cancel</button>
-        <button onClick={deletionIsConfirmed}>Confirm</button>
+        <div className="confirmation__buttons__container">
+          <button
+            className="btn confirmation__button-cancel"
+            onClick={() => setShowDelete(false)}
+          >
+            Cancel
+          </button>
+          <button
+            className="btn confirmation__button-confirm"
+            onClick={deletionIsConfirmed}
+          >
+            Confirm
+          </button>
+        </div>
       </section>
     </div>
   );
