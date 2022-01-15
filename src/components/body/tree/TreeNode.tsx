@@ -1,16 +1,21 @@
+import { useSelectedNodeContext } from 'context/SelectedNodeContext';
 import * as React from 'react';
-
-import { useTreeContext } from 'context/TreeContext';
 
 interface TreeNodeProps {
   node: TreeNode;
   level: number;
+  setShowDelete: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function TreeNode(props: TreeNodeProps): React.ReactElement {
-  const { node, level } = props;
-  const { removeNode } = useTreeContext();
-  const [showActions, setShowActions] = React.useState(false);
+  const { node, level, setShowDelete } = props;
+  const { setSelectedNode } = useSelectedNodeContext();
+  const [showActions, setShowActions] = React.useState<boolean>(false);
+
+  function handleConfirmation() {
+    setSelectedNode(node.name);
+    setShowDelete(true);
+  }
 
   return (
     <article
@@ -22,7 +27,7 @@ export default function TreeNode(props: TreeNodeProps): React.ReactElement {
       {showActions && (
         <div>
           <button onClick={() => console.log('edit', node.name)}>Edit</button>
-          <button onClick={() => removeNode(node.name)}>Delete</button>
+          <button onClick={handleConfirmation}>Delete</button>
         </div>
       )}
     </article>

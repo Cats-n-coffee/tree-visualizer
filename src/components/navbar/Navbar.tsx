@@ -3,11 +3,11 @@ import * as React from 'react';
 import ThemeToggle from './buttons/ThemeToggle';
 
 interface NavbarProps {
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Navbar(props: NavbarProps): React.ReactElement {
-  const { setShow } = props;
+  const { setShowForm } = props;
 
   return (
     <nav className="navbar">
@@ -20,7 +20,7 @@ export default function Navbar(props: NavbarProps): React.ReactElement {
         <section aria-label="add buttons" className="center navbar-add-buttons">
           <button
             className="btn  navbar-btn"
-            onClick={() => setShow(true)}
+            onClick={() => setShowForm(true)}
             type="button"
           >
             Add Component
