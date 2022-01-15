@@ -222,7 +222,7 @@ export default function Form(props: FormProps): React.ReactElement {
                   as="select"
                   id="component-parent"
                   name="parent"
-                  className="input-boxes"
+                  className="input__boxes"
                 >
                   <option>Select a Parent</option>
                   {nodeList && nodeList.length
@@ -238,6 +238,7 @@ export default function Form(props: FormProps): React.ReactElement {
                   as="select"
                   id="component-parent"
                   name="parent"
+                  className="input__boxes"
                   disabled
                 />
               )}
