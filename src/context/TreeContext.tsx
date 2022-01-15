@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { findNodeAndInsert, findNodeAndDelete } from 'utils/tree/nodeHelpers';
+import {
+  findNodeAndInsert,
+  findNodeAndDelete,
+  findNodeAndEdit,
+  findNodeAndRead,
+  createNodeNameList,
+} from 'utils/tree/nodeHelpers';
 
 // setTree optional, otherwise 'value' prop is missing a property
 type TreeContextState = {
@@ -9,6 +15,11 @@ type TreeContextState = {
   insertNode: (node: TreeNode) => void;
   // eslint-disable-next-line no-unused-vars
   removeNode: (nodeName: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  editNode: (nodeName: string, newData: TreeNode) => void;
+  // eslint-disable-next-line no-unused-vars
+  readNode: (nodeName: string) => TreeNode | string;
+  readNodeList: () => string[] | null;
 };
 
 const TreeContext = React.createContext<TreeContextState | undefined>(
@@ -53,7 +64,32 @@ export default function TreeContextProvider({
     setTree(afterDeletingNode);
   };
 
-  const value = { tree, insertNode, removeNode };
+  const editNode = (nodeName: string, newData: TreeNode) => {
+    const currentTree = tree[0];
+    const afterEditingNode = findNodeAndEdit(nodeName, newData, currentTree);
+    setTree(afterEditingNode);
+  };
+
+  const readNode = (nodeName: string) => {
+    const currentTree = tree[0];
+    const afterReadingTree = findNodeAndRead(nodeName, currentTree);
+    return afterReadingTree;
+  };
+
+  const readNodeList = () => {
+    const currentTree = tree[0];
+    const nameList = createNodeNameList(currentTree);
+    return nameList;
+  };
+
+  const value = {
+    tree,
+    insertNode,
+    removeNode,
+    editNode,
+    readNode,
+    readNodeList,
+  };
 
   return <TreeContext.Provider value={value}>{children}</TreeContext.Provider>;
 }

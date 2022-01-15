@@ -1,3 +1,4 @@
+import { useSelectedNodeContext } from 'context/SelectedNodeContext';
 import { useTreeContext } from 'context/TreeContext';
 import { Field, FieldArray, Form as FormFormik, Formik } from 'formik';
 import * as React from 'react';
@@ -5,7 +6,7 @@ import * as React from 'react';
 import { AddIcon, DeleteIcon } from './Icons';
 
 interface FormProps {
-  componentToEdit?: TreeComponent;
+  type: string;
   setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -18,34 +19,67 @@ interface FormInitialValues {
 }
 
 export default function Form(props: FormProps): React.ReactElement {
-  const { componentToEdit, setShowForm } = props;
-  const { insertNode } = useTreeContext();
+  const { type, setShowForm } = props;
+  const { readNode, insertNode, editNode, readNodeList } = useTreeContext();
+  const { selectedNode, setSelectedNode } = useSelectedNodeContext();
+  const [nodeToEdit, setNodeToEdit] = React.useState<TreeNode | null>(null);
+  const nodeList = readNodeList();
+
   const initialValues: FormInitialValues = {
-    name: componentToEdit?.name || '',
-    parent: componentToEdit?.parent || '',
-    props: componentToEdit?.props || [],
-    state: componentToEdit?.state || [],
+    name: nodeToEdit?.name || '',
+    parent: nodeToEdit?.parent || '',
+    props: nodeToEdit?.props || [],
+    state: nodeToEdit?.state || [],
     allChildren: [],
   };
 
-  const handleSubmit = (node: TreeNode) => {
+  const handleSubmitInsert = (node: TreeNode) => {
     if (node.parent === '') {
       insertNode({ ...node, parent: null });
     } else {
       insertNode(node);
     }
-
     setShowForm(false);
   };
 
+  const handleSubmitEdit = (node: TreeNode) => {
+    editNode(selectedNode, node);
+    setSelectedNode('');
+    setShowForm(false);
+  };
+
+  const validateName = (nodeName: string) => {
+    if (type === 'edit' && nodeName === initialValues.name) return;
+    const checkName = readNode(nodeName);
+    if (checkName === 'No match' || checkName === 'No component yet') {
+      return null;
+    } else {
+      return 'Component name already used';
+    }
+  };
+
+  React.useEffect(() => {
+    if (type === 'edit' && selectedNode) {
+      const currentNode = readNode(selectedNode);
+      console.log('currentNode is', currentNode);
+      if (typeof currentNode !== 'string') {
+        setNodeToEdit(currentNode);
+      }
+    }
+  }, [selectedNode, type]);
+
   return (
     <section className="center form">
-      <h2>Form</h2>
+      <h2>{type} Form</h2>
       <Formik
         enableReinitialize={true}
         initialValues={initialValues}
         onSubmit={(values) => {
-          handleSubmit(values);
+          if (type === 'insert') {
+            handleSubmitInsert(values);
+          } else {
+            handleSubmitEdit(values);
+          }
         }}
         validateOnBlur={true}
         validateOnChange={false}
@@ -61,6 +95,7 @@ export default function Form(props: FormProps): React.ReactElement {
                 id="name"
                 name="name"
                 type="text"
+                validate={validateName}
               />
               {errors.name && <div>{errors.name}</div>}
             </fieldset>
@@ -182,13 +217,30 @@ export default function Form(props: FormProps): React.ReactElement {
               <label className="label__title" htmlFor="parent">
                 Parent
               </label>
-              <Field
-                className="input__boxes"
-                id="parent"
-                name="parent"
-                type="text"
-              />
-              {errors.name && <div>{errors.name}</div>}
+              {type === 'insert' ? (
+                <Field
+                  as="select"
+                  id="component-parent"
+                  name="parent"
+                  className="input-boxes"
+                >
+                  <option>Select a Parent</option>
+                  {nodeList && nodeList.length
+                    ? nodeList.map((node, index) => (
+                        <option value={node} key={`${node}-index${index}`}>
+                          {node}
+                        </option>
+                      ))
+                    : null}
+                </Field>
+              ) : (
+                <Field
+                  as="select"
+                  id="component-parent"
+                  name="parent"
+                  disabled
+                />
+              )}
             </fieldset>
             <button className="btn btn__form submit__btn" type="submit">
               Submit
