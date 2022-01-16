@@ -13,20 +13,28 @@
 
     .node {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: center;
       align-items: center;
       padding: 1em;
       background-color: var(--component-background);
       border: 1px solid var(--component-border);
-      max-width: 150px;
-      width: 100%;
+      max-width: 300px;
+      max-height: 65px;
+      width: auto;
       border-radius: 5px;
       margin-bottom: 50px;
       position: relative;
 
+      h3 {
+        text-align: center;
+        width: 150px;
+      }
+
       .node__details {
-        position: absolute;
-        left: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 2em;
         background-color: var(--component-background);
 
         .node__btn {
@@ -51,7 +59,7 @@
 
       .node__info {
         position: absolute;
-        left: 150%;
+        left: 105%;
         width: 100px;
         background-color: pink;
       }
