@@ -5,16 +5,21 @@ import TreeContainer from './tree/TreeContainer';
 
 interface BodyProps {
   setShowDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Body(props: BodyProps): React.ReactElement {
-  const { setShowDelete } = props;
+  const { setShowDelete, setShowForm } = props;
   const { tree } = useTreeContext();
 
   return (
     <main className="body">
       <div className="treeContainer">
-        <TreeContainer tree={tree} setShowDelete={setShowDelete} />
+        <TreeContainer
+          tree={tree}
+          setShowDelete={setShowDelete}
+          setShowForm={setShowForm}
+        />
       </div>
     </main>
   );

@@ -28,11 +28,17 @@
       color: var(--text-primary);
       font-family: var(--font-mukta);
       font-size: 0.9rem;
+      max-width: 200px;
+      width: 100%;
       cursor: pointer;
 
       &:focus {
         outline: none;
         background-color: var(--sidebar-input-background);
+      }
+
+      &:disabled {
+        cursor: default;
       }
     }
 
