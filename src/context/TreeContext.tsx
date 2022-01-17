@@ -5,6 +5,7 @@ import {
   findNodeAndEdit,
   findNodeAndRead,
   createNodeNameList,
+  createNodeIDs,
 } from 'utils/tree/nodeHelpers';
 
 // setTree optional, otherwise 'value' prop is missing a property
@@ -20,6 +21,7 @@ type TreeContextState = {
   // eslint-disable-next-line no-unused-vars
   readNode: (nodeName: string) => TreeNode | string;
   readNodeList: () => string[] | null;
+  //readNodeIDs: () => string[];
 };
 
 const TreeContext = React.createContext<TreeContextState | undefined>(
@@ -37,6 +39,8 @@ export default function TreeContextProvider({
     // If the current state of the tree is empty, then it will be the root node
     if (tree.length === 0) {
       setTree((oldTree) => [...oldTree, newNode]);
+      console.log(newNode);
+      createNodeIDs(newNode);
     } else {
       // If there is already a root node, then we add children to the correct parent
       let parentName = newNode.parent;
@@ -53,7 +57,8 @@ export default function TreeContextProvider({
         newNode,
         tree: rootNode,
       });
-      setTree(newTree);
+      const treeWithIds = createNodeIDs(newTree[0]);
+      setTree(treeWithIds);
     }
   };
 
@@ -61,7 +66,8 @@ export default function TreeContextProvider({
   const removeNode = (nodeName: string) => {
     const currentTree = tree[0];
     const afterDeletingNode = findNodeAndDelete(nodeName, currentTree);
-    setTree(afterDeletingNode);
+    const newTreeWithIDs = createNodeIDs(afterDeletingNode[0]);
+    setTree(newTreeWithIDs);
   };
 
   const editNode = (nodeName: string, newData: TreeNode) => {
@@ -81,6 +87,13 @@ export default function TreeContextProvider({
     const nameList = createNodeNameList(currentTree);
     return nameList;
   };
+
+  // const readNodeIDs = () => {
+  //   const currentTree = tree[0];
+  //   const IDsList = createNodeIDsList(currentTree);
+  //   console.log('id list', IDsList)
+  //   //return IDsList;
+  // }
 
   const value = {
     tree,

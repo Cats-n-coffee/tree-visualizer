@@ -24,12 +24,13 @@ export default function TreeNode(props: TreeNodeProps): React.ReactElement {
     setSelectedNode(node.name);
     setShowForm(true);
   }
-  // comment
+  console.log(node.props, node.state);
   return (
     <article
       className="node"
       onMouseEnter={() => setShowActions(true)}
       onMouseLeave={() => setShowActions(false)}
+      id={node.id}
     >
       <h3>{node.name}</h3>
       {showActions && (
@@ -49,7 +50,26 @@ export default function TreeNode(props: TreeNodeProps): React.ReactElement {
           </button>
         </div>
       )}
-      {showInfo && <div className="node__info">info for node {node.name}</div>}
+      {showInfo && (
+        <div className="node__info">
+          <h4>Props</h4>
+          {node.props.length
+            ? node.props.map((prop) => (
+                <div key={prop.propName} className="node__info__details">
+                  <span>{prop.propName} </span> -<span> {prop.propValue}</span>
+                </div>
+              ))
+            : 'No props'}
+          <h4>State</h4>
+          {node.state.length
+            ? node.state.map((item) => (
+                <div key={item.stateName} className="node__info__details">
+                  <span>{item.hookName} </span> -<span> {item.stateName}</span>
+                </div>
+              ))
+            : 'No state'}
+        </div>
+      )}
     </article>
   );
 }

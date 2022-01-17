@@ -11,6 +11,7 @@ interface FormProps {
 }
 
 interface FormInitialValues {
+  id: string;
   name: string;
   parent: string | null;
   props: Array<PropFormValue>;
@@ -26,6 +27,7 @@ export default function Form(props: FormProps): React.ReactElement {
   const nodeList = readNodeList();
 
   const initialValues: FormInitialValues = {
+    id: nodeToEdit?.id || '',
     name: nodeToEdit?.name || '',
     parent: nodeToEdit?.parent || '',
     props: nodeToEdit?.props || [],

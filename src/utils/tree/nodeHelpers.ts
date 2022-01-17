@@ -109,3 +109,45 @@ export function createNodeNameList(
   }
   return nameList;
 }
+
+export function createNodeIDs(currentTree: TreeNode): TreeNode[] {
+  // Give the root node an ID
+  if (currentTree.parent === null && currentTree.allChildren.length === 0) {
+    currentTree.id = '1';
+  }
+  // Give all the other nodes an ID
+  else {
+    const parentId = currentTree.id;
+
+    for (let i = 0; i < currentTree.allChildren.length; i += 1) {
+      const childNode = currentTree.allChildren[i];
+      childNode.id = `${parentId}-${i + 1}`;
+      if (childNode.allChildren.length > 0) {
+        createNodeIDs(childNode);
+      }
+    }
+  }
+  return [currentTree];
+}
+
+// export function createNodeIDsList(currentTree: TreeNode, IDsList: string[] = []): void {
+//   console.log('inside the create id helper', currentTree);
+//   if (!currentTree) return null;
+//   else if (
+//     currentTree.parent === null &&
+//     currentTree.allChildren.length === 0
+//   ) {
+//     //handles the case where we only have a root node
+//     nameList.push(currentTree.name);
+//   } else if (currentTree.allChildren && currentTree.allChildren.length > 0) {
+//     // handles the case where the root node has children
+//     if (nameList.indexOf(currentTree.name) === -1) {
+//       nameList.push(currentTree.name);
+//     }
+//     for (let i = 0; i < currentTree.allChildren.length; i += 1) {
+//       nameList.push(currentTree.allChildren[i].name);
+//       createNodeNameList(currentTree.allChildren[i], nameList);
+//     }
+//   }
+//   return nameList;
+// }

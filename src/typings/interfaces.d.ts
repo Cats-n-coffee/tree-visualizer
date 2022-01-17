@@ -20,9 +20,19 @@ declare interface AppProps {
 }
 
 declare interface TreeNode {
+  id: string;
   name: string;
   props: PropFormValue[];
   state: StateFormValue[];
   parent: string | null;
   allChildren: TreeNode[];
+}
+
+declare interface NodeDOMToArray {
+  id: string;
+  name: string | null;
+}
+
+declare interface LinkPosition {
+  pathValue: string;
 }
