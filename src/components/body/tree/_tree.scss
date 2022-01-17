@@ -59,9 +59,62 @@
 
       .node__info {
         position: absolute;
-        left: 105%;
-        width: 100px;
-        background-color: pink;
+        left: 99%;
+        top: 20%;
+        width: 100%;
+        max-width: 300px;
+        background-color: var(--background);
+        box-shadow: 0 0 10px var(--background-blur);
+        padding: 1em;
+        border-radius: 5px;
+        color: var(--text-primary);
+        z-index: 3;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 10px;
+          left: -14px;
+          z-index: 10;
+          width: 0;
+          height: 0;
+          border-top: 8px solid transparent;
+          border-right: 16px solid var(--background);
+          border-bottom: 8px solid transparent;
+        }
+
+        h4 {
+          font-size: 1.3rem;
+          color: var(--text-primary);
+          position: relative;
+          z-index: 4;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 65%;
+            left: 10px;
+            width: 42px;
+            height: 5px;
+            background: var(--component-background);
+            z-index: -1;
+          }
+        }
+
+        &__details {
+          span {
+            color: var(--text-primary);
+          }
+
+          span:first-of-type {
+            font-weight: bold;
+            font-size: 1.1rem;
+          }
+
+          span:last-of-type {
+            font-size: 1rem;
+          }
+        }
       }
     }
   }
